@@ -206,36 +206,6 @@ public class FinancialTracker {
     scanner.nextLine();
 }
 
-    //Save transaction to CSV file
-    public static void saveTransaction(Transaction transaction) {
-        try {
-            FileWriter writer = new FileWriter("transactions.csv", true);
-            writer.write(transaction.toCSV() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error saving transaction: " + e.getMessage());
-        }
-    }
-
-    public static ArrayList<Transaction> loadTransactions() {
-        ArrayList<Transaction> transactions = new ArrayList<>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length == 5) {
-                    Transaction t = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
-                    transactions.add(t);
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            //file doesn't exist yet, return empty list
-        }
-        return transactions;
-    }
-
     public static void reportsScreen(Scanner scanner) {
         while (true) {
             System.out.println("\n" + "=".repeat(50));
@@ -253,20 +223,20 @@ public class FinancialTracker {
 
             switch (choice) {
                 case "1":
-                    //monthToDate();
+                    monthToDate(scanner);
                     break;
                 case"2":
-                    //previousMonth();
+                    previousMonth(scanner);
                     break;
                 case"3":
-                    //yearToDate();
+                    yearToDate(scanner);
                     break;
                 case"4":
-                    //previousYear();
+                    previousYear(scanner);
                 case"5":
-                    //searchByVendor();
+                    searchByVendor(scanner);
                 case"0":
-                    //return;
+                    return;
                 default:
                     System.out.println("Invalid option. Try again.");
             }
@@ -392,5 +362,35 @@ public class FinancialTracker {
         }
         System.out.println("\nPress Enter to continue...");
         scanner.nextLine();
+    }
+
+    //save transactions to csv file
+    public static void saveTransaction(Transaction transaction) {
+        try {
+            FileWriter writer = new FileWriter("transactions.csv", true);
+            writer.write(transaction.toCSV() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving transaction: " + e.getMessage());
+        }
+    }
+
+    public static ArrayList<Transaction> loadTransactions() {
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 5) {
+                    Transaction t = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                    transactions.add(t);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            //file doesn't exist yet, return empty list
+        }
+        return transactions;
     }
 }
