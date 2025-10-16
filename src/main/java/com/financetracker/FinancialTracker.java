@@ -87,6 +87,11 @@ public class FinancialTracker {
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
+        if(amount <= 0 ) {
+            System.out.println("amount must be greater than 0");
+            return;
+        }
+
         // Get current date and time
         String date = LocalDate.now().toString();
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
