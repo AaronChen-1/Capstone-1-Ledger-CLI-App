@@ -94,4 +94,12 @@ public class FinancialTracker {
         // TODO: Save to file
         System.out.println("Payment added! (Not saved yet)");
     }
+
+    // Ledger Screen (placeholder for now)
+    public static void ledgerScreen() {
+        System.out.println("\n=== LEDGER ===");
+        System.out.println("Coming soon...");
+        System.out.println("Press Enter to go back");
+        scanner.nextLine();
+    }
 }
