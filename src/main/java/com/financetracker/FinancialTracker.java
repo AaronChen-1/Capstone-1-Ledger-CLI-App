@@ -319,7 +319,29 @@ public class FinancialTracker {
         scanner.nextLine();
     }
 
-    public static void yearToDate() {
-        //
+    public static void yearToDate(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        int currentYear = LocalDate.now().getYear();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      YEAR TO DATE");
+        System.out.println("=".repeat(50));
+        boolean found = false;
+
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            Transaction t = transactions.get(i);
+            LocalDate transDate = LocalDate.parse(t.date);
+            if (transDate.getYear() == currentYear) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                        t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No transactions found for this year.");
+        }
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+
     }
 }
