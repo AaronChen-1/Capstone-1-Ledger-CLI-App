@@ -13,8 +13,9 @@ public class FinancialTracker {
         //homeScreen();
     }
 
+    // Home Screen
     public static void homeScreen() {
-        while(true){
+        while (true) {
             System.out.println("\n" + "=".repeat(50));
             System.out.println("          ACCOUNTING LEDGER - HOME");
             System.out.println("=".repeat(50));
@@ -27,8 +28,70 @@ public class FinancialTracker {
 
             String choice = scanner.nextLine().toUpperCase();
 
+            switch (choice) {
+                case "D":
+                    addDeposit();
+                    break;
+                case "P":
+                    makePayment();
+                    break;
+                case "L":
+                    //ledgerScreen();
+                    break;
+                case "X":
+                    System.out.println("Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option. Try again.");
             }
         }
     }
 
+    // Add Deposit
+    public static void addDeposit() {
+        System.out.println("\n=== ADD DEPOSIT ===");
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Amount: ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine(); // consume newline
+
+        // Get current date and time
+        String date = LocalDate.now().toString();
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        // Create transaction (positive amount for deposit)
+        Transaction transaction = new Transaction(date, time, description, vendor, amount);
+
+        // TODO: Save to file
+        System.out.println("Deposit added! (Not saved yet)");
+    }
+
+    // Make Payment
+    public static void makePayment() {
+        System.out.println("\n=== MAKE PAYMENT ===");
+        System.out.print("Description: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Amount: ");
+        double amount = scanner.nextDouble();
+        scanner.nextLine();
+
+        // Get current date and time
+        String date = LocalDate.now().toString();
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        // Create transaction (negative amount for payment)
+        Transaction transaction = new Transaction(date, time, description, vendor, -amount);
+
+        // TODO: Save to file
+        System.out.println("Payment added! (Not saved yet)");
+    }
 }
