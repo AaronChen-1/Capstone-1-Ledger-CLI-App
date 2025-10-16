@@ -1,6 +1,5 @@
 package com.financetracker;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FinancialTracker {
-    static Scanner scanner = new Scanner(System.in);
+static     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         homeScreen();
@@ -120,8 +119,24 @@ public class FinancialTracker {
 
     }
 
-    }
 
+
+
+public static void displayAll() {
+    ArrayList<Transaction> transactions = loadTransactions();
+    System.out.println("\n=== ALL TRANSACTIONS ===");
+    if (transactions.isEmpty()) {
+        System.out.println("No transactions found.");
+    } else {
+        for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
+            Transaction t = transactions.get(i);
+            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                    t.date, t.time, t.description, t.vendor, t.amount);
+        }
+    }
+    System.out.println("\nPress Enter to continue...");
+    scanner.nextLine();
+}
     //Save transaction to CSV file
     public static void saveTransaction(Transaction transaction) {
         try {
@@ -133,22 +148,22 @@ public class FinancialTracker {
         }
     }
 
-    public static ArrayList<Transaction> loadTransactions(){
-    ArrayList<Transaction> transactions = new ArrayList<>();
-    try{
-        BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
-        String line;
-        while ((line = reader.readLine()) != null){
-            String[] parts = line.split("\\|");
-            if (parts.length ==5){
-                Transaction t = new Transaction(parts[0], parts[1], parts[2],parts[3], Double.parseDouble(parts[4]));
-                transactions.add(t);
+    public static ArrayList<Transaction> loadTransactions() {
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 5) {
+                    Transaction t = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                    transactions.add(t);
+                }
             }
+            reader.close();
+        } catch (IOException e) {
+            //file doesn't exist yet, return empty list
         }
-        reader.close();
-    } catch(IOException e){
-        //file doesnt exist yet, return empty list
+        return transactions;
     }
-    return transactions;
-
 }
