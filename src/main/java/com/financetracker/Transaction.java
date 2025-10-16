@@ -18,45 +18,29 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Transaction(String date, String time, String description, String vendor, double amount) {
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public LocalDate getDate() {
+        return date;
     }
 
     public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getVendor() {
         return vendor;
     }
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
     public String toCSV() {
         return date + " | " + time + "|" + description +"|" + vendor + "|" + amount;
     }
