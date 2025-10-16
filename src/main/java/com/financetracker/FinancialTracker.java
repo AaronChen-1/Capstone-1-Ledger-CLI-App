@@ -1,6 +1,9 @@
 package com.financetracker;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -129,4 +132,23 @@ public class FinancialTracker {
             System.out.println("Error saving transaction: " + e.getMessage());
         }
     }
+
+    public static ArrayList<Transaction> loadTransactions(){
+    ArrayList<Transaction> transactions = new ArrayList<>();
+    try{
+        BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"));
+        String line;
+        while ((line = reader.readLine()) != null){
+            String[] parts = line.split("\\|");
+            if (parts.length ==5){
+                Transaction t = new Transaction(parts[0], parts[1], parts[2],parts[3], Double.parseDouble(parts[4]));
+                transactions.add(t);
+            }
+        }
+        reader.close();
+    } catch(IOException e){
+        //file doesnt exist yet, return empty list
+    }
+    return transactions;
+
 }
