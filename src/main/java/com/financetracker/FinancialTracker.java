@@ -106,7 +106,7 @@ public class FinancialTracker {
     public static void ledgerScreen(Scanner scanner) {
     while(true){
         System.out.println("\n" + "=".repeat(50));
-        System.out.println("          LEDGER");
+        System.out.println("                      LEDGER");
         System.out.println("=".repeat(50));
         System.out.println("A) All Entries");
         System.out.println("D) Deposits");
@@ -126,7 +126,7 @@ public class FinancialTracker {
                 displayDeposits(scanner);
                 break;
             case "P":
-                //displayPayments(scanner);
+                displayPayments(scanner);
                 break;
             case "R":
                 System.out.println("reports otw");
@@ -146,58 +146,58 @@ public class FinancialTracker {
 
 
 
-public static void displayAll(Scanner scanner) {
-    ArrayList<Transaction> transactions = loadTransactions();
-    System.out.println("\n" + "=".repeat(50));
-    System.out.println("                      ALL TRANSACTIONS");
-    System.out.println("=".repeat(50));
-    if (transactions.isEmpty()) {
-        System.out.println("No transactions found.");
-    } else {
+    public static void displayAll(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      ALL TRANSACTIONS");
+        System.out.println("=".repeat(50));
+        if (transactions.isEmpty()) {
+            System.out.println("No transactions found.");
+        } else {
+            for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
+                Transaction t = transactions.get(i);
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                        t.date, t.time, t.description, t.vendor, t.amount);
+            }
+        }
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
+
+    public static void displayDeposits(Scanner scanner){
+        ArrayList<Transaction> transactions = loadTransactions();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      DEPOSITS");
+        System.out.println("=".repeat(50));
+        boolean found = false;
+        for (int i = transactions.size() - 1; i>=0; i--) {
+            Transaction t = transactions.get(i);
+            if (t.amount > 0 ) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No deposits found.");
+        }
+        System.out.println("\nPress Enter to continue");
+        scanner.nextLine();
+    }
+
+    public static void displayPayments(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      PAYMENTS");
+        System.out.println("=".repeat(50));
+        boolean found = false;
         for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
             Transaction t = transactions.get(i);
-            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
-                    t.date, t.time, t.description, t.vendor, t.amount);
+            if (t.amount < 0) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                        t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
         }
-    }
-    System.out.println("\nPress Enter to continue...");
-    scanner.nextLine();
-}
-
-public static void displayDeposits(Scanner scanner){
-    ArrayList<Transaction> transactions = loadTransactions();
-    System.out.println("\n" + "=".repeat(50));
-    System.out.println("                      DEPOSITS");
-    System.out.println("=".repeat(50));
-    boolean found = false;
-    for (int i = transactions.size() - 1; i>=0; i--) {
-        Transaction t = transactions.get(i);
-        if (t.amount > 0 ) {
-            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
-            found = true;
-        }
-    }
-    if (!found) {
-        System.out.println("No deposits found.");
-    }
-    System.out.println("\nPress Enter to continue");
-    scanner.nextLine();
-}
-
-public static void displayPayments(Scanner scanner) {
-    ArrayList<Transaction> transactions = loadTransactions();
-    System.out.println("\n" + "=".repeat(50));
-    System.out.println("                      PAYMENTS");
-    System.out.println("=".repeat(50));
-    boolean found = false;
-    for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
-        Transaction t = transactions.get(i);
-        if (t.amount < 0) {
-            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
-                    t.date, t.time, t.description, t.vendor, t.amount);
-            found = true;
-        }
-    }
     if (!found) {
         System.out.println("No payments found.");
     }
@@ -233,5 +233,42 @@ public static void displayPayments(Scanner scanner) {
             //file doesn't exist yet, return empty list
         }
         return transactions;
+    }
+
+    public static void reportsScreen(Scanner scanner) {
+        while (true) {
+            System.out.println("\n" + "=".repeat(50));
+            System.out.println("                      REPORTS");
+            System.out.println("=".repeat(50));
+            System.out.println("1) Month To Date");
+            System.out.println("2) Previous Month");
+            System.out.println("3) Year To Date");
+            System.out.println("4) Previous Year");
+            System.out.println("5) Search by Vendor");
+            System.out.println("0) Back");
+            System.out.print("Choose an option (0-5): ");
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    //monthToDate();
+                    break;
+                case"2":
+                    //previousMonth();
+                    break;
+                case"3":
+                    //yearToDate();
+                    break;
+                case"4":
+                    //previousYear();
+                case"5":
+                    //searchByVendor();
+                case"0":
+                    //return;
+                default:
+                    System.out.println("Invalid option. Try again.");
+            }
+        }
     }
 }
