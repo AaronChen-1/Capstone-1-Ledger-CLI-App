@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FinancialTracker {
-static     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         homeScreen();
@@ -19,6 +18,7 @@ static     Scanner scanner = new Scanner(System.in);
 
     // Home Screen
     public static void homeScreen() {
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n" + "=".repeat(50));
             System.out.println("                      HOME");
@@ -34,17 +34,17 @@ static     Scanner scanner = new Scanner(System.in);
 
             switch (choice) {
                 case "D":
-                    addDeposit();
+                    addDeposit(scanner);
                     break;
                 case "P":
-                    makePayment();
+                    makePayment(scanner);
                     break;
                 case "L":
-                    ledgerScreen();
+                    ledgerScreen(scanner);
                     break;
                 case "X":
                     System.out.println("Exit");
-                    //System.exit(0);
+                    System.exit(0);
                 default:
                     System.out.println("Invalid option. Try again.");
             }
@@ -52,9 +52,10 @@ static     Scanner scanner = new Scanner(System.in);
     }
 
     // Add Deposit
-    public static void addDeposit() {
-        System.out.println("\n=== ADD DEPOSIT ===");
-        System.out.print("Description: ");
+    public static void addDeposit(Scanner scanner) {
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      ADD DEPOSIT");
+        System.out.println("=".repeat(50));
         String description = scanner.nextLine();
 
         System.out.print("Vendor: ");
@@ -76,8 +77,10 @@ static     Scanner scanner = new Scanner(System.in);
     }
 
     // Make Payment
-    public static void makePayment() {
-        System.out.println("\n=== MAKE PAYMENT ===");
+    public static void makePayment(Scanner scanner) {
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      MAKE PAYMENT");
+        System.out.println("=".repeat(50));
         System.out.print("Description: ");
         String description = scanner.nextLine();
 
@@ -100,7 +103,7 @@ static     Scanner scanner = new Scanner(System.in);
     }
 
     // Ledger Screen (placeholder for now)
-    public static void ledgerScreen() {
+    public static void ledgerScreen(Scanner scanner) {
     while(true){
         System.out.println("\n" + "=".repeat(50));
         System.out.println("          LEDGER");
@@ -112,7 +115,28 @@ static     Scanner scanner = new Scanner(System.in);
         System.out.println("H) Home");
         System.out.println("=".repeat(50));
         System.out.print("Enter your choice: ");
-        scanner.nextLine();
+
+        String choice = scanner.next().toUpperCase();
+
+        switch(choice) {
+            case "A":
+                displayAll(scanner);
+                break;
+            case "D":
+                //displayDeposits(scanner);
+                break;
+            case "P":
+                //displayPayments(scanner);
+                break;
+            case "R":
+                System.out.println("reports otw");
+                break;
+            case "H":
+                return;
+            default:
+                System.out.println("Invalid option. Try again.");
+
+        }
 
 
     }
@@ -122,9 +146,11 @@ static     Scanner scanner = new Scanner(System.in);
 
 
 
-public static void displayAll() {
+public static void displayAll(Scanner scanner) {
     ArrayList<Transaction> transactions = loadTransactions();
-    System.out.println("\n=== ALL TRANSACTIONS ===");
+    System.out.println("\n" + "=".repeat(50));
+    System.out.println("                      ALL TRANSACTIONS");
+    System.out.println("=".repeat(50));
     if (transactions.isEmpty()) {
         System.out.println("No transactions found.");
     } else {
@@ -135,6 +161,26 @@ public static void displayAll() {
         }
     }
     System.out.println("\nPress Enter to continue...");
+    scanner.nextLine();
+}
+
+public static void displayDeposits(Scanner scanner){
+    ArrayList<Transaction> transactions = loadTransactions();
+    System.out.println("\n" + "=".repeat(50));
+    System.out.println("                      DEPOSITS");
+    System.out.println("=".repeat(50));
+    boolean found = false;
+    for (int i = transactions.size() - 1; i>=0; i--) {
+        Transaction t = transactions.get(i);
+        if (t.amount > 0 ) {
+            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+            found = true;
+        }
+    }
+    if (!found) {
+        System.out.println("No deposits found.");
+    }
+    System.out.println("\nPress Enter to continue");
     scanner.nextLine();
 }
     //Save transaction to CSV file
