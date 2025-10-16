@@ -20,7 +20,4 @@ public class Transaction {
         return date + " | " + time + "|" + description +"|" + vendor + "|" + amount;
     }
 
-    public String toString() {
-        return String.format("%s | %s | %-20s | %-20s | %8.2f",date,time,description,vendor,amount);
-    }
 }

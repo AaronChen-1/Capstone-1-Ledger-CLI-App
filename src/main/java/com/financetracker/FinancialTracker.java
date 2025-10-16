@@ -2,6 +2,7 @@ package com.financetracker;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
@@ -270,5 +271,55 @@ public class FinancialTracker {
                     System.out.println("Invalid option. Try again.");
             }
         }
+    }
+
+    public static void monthToDate(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        LocalDate now = LocalDate.now();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      MONTH TO DATE");
+        System.out.println("=".repeat(50));
+        boolean found = false;
+        for (int i = transactions.size() -1; i > 0; i--) {
+            Transaction t = transactions.get(i);
+            LocalDate transDate = LocalDate.parse(t.date);
+            if (transDate.getYear() == now.getYear() && transDate.getMonth() == now.getMonth()) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No transactions found for this month");
+        }
+        System.out.println("\nPress enter to continue...");
+        scanner.nextLine();
+    }
+
+    public static void previousMonth(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        YearMonth lastMonth = YearMonth.now().minusMonths(1);
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      PREVIOUS MONTH");
+        System.out.println("=".repeat(50));
+        boolean found = false;
+
+        for (int i = transactions.size() -1; i >= 0; i--) {
+            Transaction t = transactions.get(i);
+            LocalDate transDate = LocalDate.parse(t.date);
+            YearMonth transMonth = YearMonth.from(transDate);
+            if (transMonth.equals(lastMonth)) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No transasctions found for previous month.");
+        }
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
+
+    public static void yearToDate() {
+        //
     }
 }
