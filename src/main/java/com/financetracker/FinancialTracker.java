@@ -344,4 +344,29 @@ public class FinancialTracker {
         scanner.nextLine();
 
     }
+
+    public static void previousYear(Scanner scanner) {
+        ArrayList<Transaction> transactions = loadTransactions();
+        int lastYear = LocalDate.now().getYear() - 1;
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      PREVIOUS YEAR");
+        System.out.println("=".repeat(50));
+        boolean found = false;
+
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            Transaction t = transactions.get(i);
+            LocalDate transDate = LocalDate.parse(t.date);
+            if (transDate.getYear() == lastYear) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                        t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No transactions found for previous year.");
+        }
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
 }
