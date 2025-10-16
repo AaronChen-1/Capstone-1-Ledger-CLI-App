@@ -5,19 +5,21 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class FinancialTracker {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        //homeScreen();
+        homeScreen();
     }
 
     // Home Screen
     public static void homeScreen() {
         while (true) {
             System.out.println("\n" + "=".repeat(50));
-            System.out.println("          ACCOUNTING LEDGER - HOME");
+            System.out.println("                      HOME");
             System.out.println("=".repeat(50));
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
@@ -36,7 +38,7 @@ public class FinancialTracker {
                     makePayment();
                     break;
                 case "L":
-                    //ledgerScreen();
+                    ledgerScreen();
                     break;
                 case "X":
                     System.out.println("Goodbye!");
