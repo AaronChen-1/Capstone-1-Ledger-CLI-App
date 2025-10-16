@@ -69,7 +69,7 @@ public class FinancialTracker {
         // Create transaction (positive amount for deposit)
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
 
-        // TODO: Save to file
+        saveTransaction(transaction);
         System.out.println("Deposit added! (Not saved yet)");
     }
 
@@ -93,7 +93,7 @@ public class FinancialTracker {
         // Create transaction (negative amount for payment)
         Transaction transaction = new Transaction(date, time, description, vendor, -amount);
 
-        // TODO: Save to file
+        saveTransaction(transaction);
         System.out.println("Payment added! (Not saved yet)");
     }
 
