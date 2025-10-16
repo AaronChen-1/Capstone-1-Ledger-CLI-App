@@ -99,10 +99,24 @@ public class FinancialTracker {
 
     // Ledger Screen (placeholder for now)
     public static void ledgerScreen() {
-        System.out.println("\n=== LEDGER ===");
-        System.out.println("Coming soon...");
-        System.out.println("Press Enter to go back");
-        scanner.nextLine();
+    while(true){
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("          LEDGER");
+        System.out.println("=".repeat(50));
+        System.out.println("A) All Entries");
+        System.out.println("D) Deposits");
+        System.out.println("P) Payments");
+        System.out.println("R) Reports");
+        System.out.println("H) Home");
+        System.out.println("=".repeat(50));
+        System.out.print("Enter your choice: ");
+
+
+
+    }
+
+    }
+
     }
 
     //Save transaction to CSV file
