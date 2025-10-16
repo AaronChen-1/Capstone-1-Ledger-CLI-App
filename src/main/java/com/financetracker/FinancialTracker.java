@@ -369,4 +369,28 @@ public class FinancialTracker {
         System.out.println("\nPress Enter to continue...");
         scanner.nextLine();
     }
+
+    public static void searchByVendor(Scanner scanner) {
+        System.out.print("\nEnter vendor name: ");
+        String searchVendor = scanner.nextLine();
+
+        ArrayList<Transaction> transactions = loadTransactions();
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("                      SEARCH RESULTS FOR: " + searchVendor);
+        System.out.println("=".repeat(50));
+        boolean found = false;
+
+        for (int i = transactions.size() -1; i>= 0; i--) {
+            Transaction t = transactions.get(i);
+            if (t.vendor.equalsIgnoreCase(searchVendor)) {
+                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No transactions found for vendor: " + searchVendor);
+        }
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
 }
