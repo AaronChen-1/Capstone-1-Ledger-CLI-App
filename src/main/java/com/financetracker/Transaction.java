@@ -1,16 +1,14 @@
 package com.financetracker;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Transaction {
-     LocalDate date;
-     LocalTime time;
+     String date;
+     String time;
      String description;
      String vendor;
      double amount;
 
-    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
+    public Transaction(String date, String time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
         this.description = description;
