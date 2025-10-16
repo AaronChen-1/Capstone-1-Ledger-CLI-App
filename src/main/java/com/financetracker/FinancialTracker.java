@@ -104,4 +104,15 @@ public class FinancialTracker {
         System.out.println("Press Enter to go back");
         scanner.nextLine();
     }
+
+    //Save transaction to CSV file
+    public static void saveTransaction(Transaction transaction) {
+        try {
+            FileWriter writer = new FileWriter("transactions.csv", true);
+            writer.write(transaction.toCSV() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving transaction: " + e.getMessage());
+        }
+    }
 }
