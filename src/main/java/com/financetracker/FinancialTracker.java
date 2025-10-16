@@ -123,7 +123,7 @@ public class FinancialTracker {
                 displayAll(scanner);
                 break;
             case "D":
-                //displayDeposits(scanner);
+                displayDeposits(scanner);
                 break;
             case "P":
                 //displayPayments(scanner);
@@ -183,6 +183,28 @@ public static void displayDeposits(Scanner scanner){
     System.out.println("\nPress Enter to continue");
     scanner.nextLine();
 }
+
+public static void displayPayments(Scanner scanner) {
+    ArrayList<Transaction> transactions = loadTransactions();
+    System.out.println("\n" + "=".repeat(50));
+    System.out.println("                      PAYMENTS");
+    System.out.println("=".repeat(50));
+    boolean found = false;
+    for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
+        Transaction t = transactions.get(i);
+        if (t.amount < 0) {
+            System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                    t.date, t.time, t.description, t.vendor, t.amount);
+            found = true;
+        }
+    }
+    if (!found) {
+        System.out.println("No payments found.");
+    }
+    System.out.println("\nPress Enter to continue...");
+    scanner.nextLine();
+}
+
     //Save transaction to CSV file
     public static void saveTransaction(Transaction transaction) {
         try {
