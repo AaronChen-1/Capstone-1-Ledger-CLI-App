@@ -49,6 +49,8 @@ public class FinancialTracker {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ADD DEPOSIT");
         System.out.println("=".repeat(50));
+
+        System.out.print("Description: ");
         String description = scanner.nextLine();
 
         System.out.print("Vendor: ");
@@ -66,7 +68,7 @@ public class FinancialTracker {
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
 
         saveTransaction(transaction);
-        System.out.println("Deposit added! (Not saved yet)");
+        System.out.println("Deposit saved");
     }
 
     // Make Payment for home screen
