@@ -76,6 +76,7 @@ public class FinancialTracker {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      MAKE PAYMENT");
         System.out.println("=".repeat(50));
+
         System.out.print("Description: ");
         String description = scanner.nextLine();
 
@@ -94,7 +95,7 @@ public class FinancialTracker {
         Transaction transaction = new Transaction(date, time, description, vendor, -amount);
 
         saveTransaction(transaction);
-        System.out.println("Payment added! (Not saved yet)");
+        System.out.println("Payment added");
     }
 
     // go to ledger screen from home screen
@@ -150,6 +151,7 @@ public class FinancialTracker {
         System.out.println("                      DEPOSITS");
         System.out.println("=".repeat(50));
         boolean found = false;
+
         for (int i = transactions.size() - 1; i>=0; i--) {
             Transaction t = transactions.get(i);
             if (t.amount > 0 ) {
@@ -202,10 +204,10 @@ public class FinancialTracker {
 
             switch (choice) {
                 case "1": monthToDate(scanner); break;
-                case "2": previousMonth(scanner);break;
+                case "2": previousMonth(scanner); break;
                 case "3": yearToDate(scanner);break;
-                case "4": previousYear(scanner);
-                case"5": searchByVendor(scanner);
+                case "4": previousYear(scanner);break;
+                case"5": searchByVendor(scanner);break;
                 case"0": return;
                 default:
                     System.out.println("Invalid option. Try again.");
