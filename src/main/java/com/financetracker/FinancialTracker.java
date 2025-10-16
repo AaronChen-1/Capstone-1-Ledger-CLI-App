@@ -17,7 +17,6 @@ public class FinancialTracker {
         homeScreen();
     }
 
-    // Home Screen
     public static void homeScreen() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -34,17 +33,10 @@ public class FinancialTracker {
             String choice = scanner.nextLine().toUpperCase();
 
             switch (choice) {
-                case "D":
-                    addDeposit(scanner);
-                    break;
-                case "P":
-                    makePayment(scanner);
-                    break;
-                case "L":
-                    ledgerScreen(scanner);
-                    break;
-                case "X":
-                    System.out.println("Exit");
+                case "D": addDeposit(scanner);break;
+                case "P": makePayment(scanner);break;
+                case "L": ledgerScreen(scanner);break;
+                case "X": System.out.println("Exit");
                     System.exit(0);
                 default:
                     System.out.println("Invalid option. Try again.");
@@ -52,7 +44,7 @@ public class FinancialTracker {
         }
     }
 
-    // Add Deposit
+    // Add Deposit for home screen
     public static void addDeposit(Scanner scanner) {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ADD DEPOSIT");
@@ -77,7 +69,7 @@ public class FinancialTracker {
         System.out.println("Deposit added! (Not saved yet)");
     }
 
-    // Make Payment
+    // Make Payment for home screen
     public static void makePayment(Scanner scanner) {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      MAKE PAYMENT");
@@ -103,7 +95,7 @@ public class FinancialTracker {
         System.out.println("Payment added! (Not saved yet)");
     }
 
-    // Ledger Screen (placeholder for now)
+    // go to ledger screen from home screen
     public static void ledgerScreen(Scanner scanner) {
     while(true){
         System.out.println("\n" + "=".repeat(50));
@@ -120,32 +112,17 @@ public class FinancialTracker {
         String choice = scanner.next().toUpperCase();
 
         switch(choice) {
-            case "A":
-                displayAll(scanner);
-                break;
-            case "D":
-                displayDeposits(scanner);
-                break;
-            case "P":
-                displayPayments(scanner);
-                break;
-            case "R":
-                System.out.println("reports otw");
-                break;
-            case "H":
-                return;
+            case "A": displayAll(scanner); break;
+            case "D": displayDeposits(scanner); break;
+            case "P": displayPayments(scanner);break;
+            case "R": reportsScreen(scanner);break;
+            case "H": return;
             default:
                 System.out.println("Invalid option. Try again.");
 
         }
-
-
     }
-
-    }
-
-
-
+}
 
     public static void displayAll(Scanner scanner) {
         ArrayList<Transaction> transactions = loadTransactions();
@@ -222,21 +199,12 @@ public class FinancialTracker {
             String choice = scanner.nextLine();
 
             switch (choice) {
-                case "1":
-                    monthToDate(scanner);
-                    break;
-                case"2":
-                    previousMonth(scanner);
-                    break;
-                case"3":
-                    yearToDate(scanner);
-                    break;
-                case"4":
-                    previousYear(scanner);
-                case"5":
-                    searchByVendor(scanner);
-                case"0":
-                    return;
+                case "1": monthToDate(scanner); break;
+                case "2": previousMonth(scanner);break;
+                case "3": yearToDate(scanner);break;
+                case "4": previousYear(scanner);
+                case"5": searchByVendor(scanner);
+                case"0": return;
                 default:
                     System.out.println("Invalid option. Try again.");
             }
