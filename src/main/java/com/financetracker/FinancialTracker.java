@@ -274,7 +274,7 @@ public class FinancialTracker {
                     previousYear(scanner);
                     break;
                 case"5":
-                    simulateLoading("loading");
+                    simulateLoading("loading Search Vendors page");
                     searchByVendor(scanner);
                     break;
                 case"0": return;
@@ -324,7 +324,7 @@ public class FinancialTracker {
             }
         }
         if (!found) {
-            System.out.println("No transasctions found for previous month.");
+            System.out.println("No transactions found for previous month.");
         }
         System.out.print("\nPress Enter to continue...");
         scanner.nextLine();
