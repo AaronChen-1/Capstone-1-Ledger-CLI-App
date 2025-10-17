@@ -14,6 +14,7 @@ import java.io.IOException;
 public class FinancialTracker {
 
     public static void main(String[] args) {
+        welcomePage();
         homeScreen();
     }
 
@@ -24,6 +25,19 @@ public class FinancialTracker {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    public static void welcomePage() {
+        System.out.println("=".repeat(50));
+        System.out.println("        WELCOME TO CORNER MART FINANCIALS");
+        System.out.println("=".repeat(50));
+        System.out.println("Your trusted neighborhood store since 1998!");
+        System.out.println();
+        simulateLoading("Loading your financial dashboard, please wait");
+
+        System.out.println("Dashboard Ready!");
+        System.out.println("Press Enter to continue to Home Screen...");
+        new Scanner(System.in).nextLine();
     }
 
     public static void homeScreen() {
