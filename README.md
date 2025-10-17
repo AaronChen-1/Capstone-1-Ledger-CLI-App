@@ -31,7 +31,8 @@ It uses a menu-driven interface and stores transactions in a CSV file so data pe
 
 
 -  Welcome screen with loading animation
-  <img width="410" height="196" alt="image" src="https://github.com/user-attachments/assets/e95401f9-4f4c-4fd0-ba38-00af9c2e9228" />
+<img width="362" height="185" alt="image" src="https://github.com/user-attachments/assets/f0910dc0-0042-4996-9480-13b8694b6490" />
+
 
 - Home menu
 <img width="419" height="172" alt="image" src="https://github.com/user-attachments/assets/5a8f9073-15ae-4527-8999-9bcbe9311e50" />
