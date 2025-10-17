@@ -117,6 +117,10 @@ public class FinancialTracker {
 
         System.out.print("Description: ");
         String description = scanner.nextLine();
+        if (description.equalsIgnoreCase("X")) {
+            simulateLoading("Payment cancelled. Returning to Home...");
+            return;
+        }
 
         System.out.print("Vendor: ");
         String vendor = scanner.nextLine();
