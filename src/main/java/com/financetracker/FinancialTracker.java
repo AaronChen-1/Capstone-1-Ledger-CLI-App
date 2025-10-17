@@ -18,13 +18,9 @@ public class FinancialTracker {
     }
 
     public static void simulateLoading(String message) {
-        System.out.println("\n" + message);
+        System.out.println("\n" + message + "...");
         try {
-            for (int i = 0; i<3;i++) {
-                Thread.sleep(800);
-                System.out.println(".");
-            }
-            System.out.println("\n");
+            Thread.sleep(800);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -46,11 +42,20 @@ public class FinancialTracker {
             String choice = scanner.nextLine().toUpperCase();
 
             switch (choice) {
-                case "D": addDeposit(scanner);break;
-                case "P": makePayment(scanner);break;
-                case "L": simulateLoading("Opening Ledger");
-                    ledgerScreen(scanner);break;
-                case "X": System.out.println("Goodbye");
+                case "D":
+                    simulateLoading("Opening deposit screen");
+                    addDeposit(scanner);
+                    break;
+                case "P":
+                    simulateLoading("Opening payment screen");
+                    makePayment(scanner);
+                    break;
+                case "L":
+                    simulateLoading("Opening Ledger");
+                    ledgerScreen(scanner);
+                    break;
+                case "X":
+                    System.out.println("Goodbye");
                     System.exit(0);
                 default:
                     System.out.println("Invalid option. Try again.");
@@ -131,13 +136,21 @@ public class FinancialTracker {
         System.out.println("=".repeat(50));
         System.out.print("Enter your choice: ");
 
-        String choice = scanner.next().toUpperCase();
+        String choice = scanner.nextLine().toUpperCase();
 
         switch(choice) {
-            case "A": displayAll(scanner); break;
-            case "D": displayDeposits(scanner); break;
-            case "P": displayPayments(scanner);break;
-            case "R": reportsScreen(scanner);break;
+            case "A":
+                simulateLoading("Loading All transactions");
+                displayAll(scanner); break;
+            case "D":
+                simulateLoading("Loading all deposits");
+                displayDeposits(scanner); break;
+            case "P":
+                simulateLoading("Loading all payments");
+                displayPayments(scanner);break;
+            case "R":
+                simulateLoading("Loading reports page...");
+                reportsScreen(scanner);break;
             case "H": return;
             default:
                 System.out.println("Invalid option. Try again.");
@@ -159,7 +172,7 @@ public class FinancialTracker {
                 System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
             }
         }
-        System.out.println("\nPress Enter to continue...");
+        System.out.print("\nPress Enter to continue...");
         scanner.nextLine();
     }
 
@@ -180,7 +193,7 @@ public class FinancialTracker {
         if (!found) {
             System.out.println("No deposits found.");
         }
-        System.out.println("\nPress Enter to continue");
+        System.out.print("\nPress Enter to continue");
         scanner.nextLine();
     }
 
@@ -193,15 +206,14 @@ public class FinancialTracker {
         for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
             Transaction t = transactions.get(i);
             if (t.amount < 0) {
-                System.out.printf("%s | %s | %s | %s | $%.2f%n",
-                        t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
         }
     if (!found) {
         System.out.println("No payments found.");
     }
-    System.out.println("\nPress Enter to continue...");
+    System.out.print("\nPress Enter to continue...");
     scanner.nextLine();
 }
 
@@ -221,11 +233,26 @@ public class FinancialTracker {
             String choice = scanner.nextLine();
 
             switch (choice) {
-                case "1": monthToDate(scanner); break;
-                case "2": previousMonth(scanner); break;
-                case "3": yearToDate(scanner);break;
-                case "4": previousYear(scanner);break;
-                case"5": searchByVendor(scanner);break;
+                case "1":
+                    simulateLoading("Showing transactions from current month");
+                    monthToDate(scanner);
+                    break;
+                case "2":
+                    simulateLoading("Showing transactions from last month");
+                    previousMonth(scanner);
+                    break;
+                case "3":
+                    simulateLoading("Showing transactions from current year");
+                    yearToDate(scanner);
+                    break;
+                case "4":
+                    simulateLoading("Showing transactions from last year");
+                    previousYear(scanner);
+                    break;
+                case"5":
+                    simulateLoading("loading");
+                    searchByVendor(scanner);
+                    break;
                 case"0": return;
                 default:
                     System.out.println("Invalid option. Try again.");
@@ -251,7 +278,7 @@ public class FinancialTracker {
         if (!found) {
             System.out.println("No transactions found for this month");
         }
-        System.out.println("\nPress enter to continue...");
+        System.out.print("\nPress enter to continue...");
         scanner.nextLine();
     }
 
@@ -275,7 +302,7 @@ public class FinancialTracker {
         if (!found) {
             System.out.println("No transasctions found for previous month.");
         }
-        System.out.println("\nPress Enter to continue...");
+        System.out.print("\nPress Enter to continue...");
         scanner.nextLine();
     }
 
@@ -300,7 +327,7 @@ public class FinancialTracker {
         if (!found) {
             System.out.println("No transactions found for this year.");
         }
-        System.out.println("\nPress Enter to continue...");
+        System.out.print("\nPress Enter to continue...");
         scanner.nextLine();
 
     }
