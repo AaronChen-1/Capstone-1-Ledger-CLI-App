@@ -14,6 +14,7 @@ import java.io.IOException;
 public class FinancialTracker {
 
     public static void main(String[] args) {
+        clearConsole();
         welcomePage();
         homeScreen();
     }
@@ -48,6 +49,7 @@ public class FinancialTracker {
     public static void homeScreen() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            clearConsole();
             System.out.println("\n" + "=".repeat(50));
             System.out.println("                      HOME");
             System.out.println("=".repeat(50));
@@ -83,9 +85,11 @@ public class FinancialTracker {
     }
 
     public static void addDeposit(Scanner scanner) {
+        clearConsole();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ADD DEPOSIT");
         System.out.println("=".repeat(50));
+        //smart cancel
         System.out.println("(Type 'X' if you want to cancel and return to Home)" );
 
         System.out.print("Description: ");
@@ -113,6 +117,7 @@ public class FinancialTracker {
     }
 
     public static void makePayment(Scanner scanner) {
+        clearConsole();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      MAKE PAYMENT");
         System.out.println("=".repeat(50));
@@ -151,6 +156,7 @@ public class FinancialTracker {
     // go to ledger screen from home screen
     public static void ledgerScreen(Scanner scanner) {
     while(true){
+        clearConsole();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      LEDGER");
         System.out.println("=".repeat(50));
@@ -186,6 +192,7 @@ public class FinancialTracker {
 }
 
     public static void displayAll(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ALL TRANSACTIONS");
@@ -203,6 +210,7 @@ public class FinancialTracker {
     }
 
     public static void displayDeposits(Scanner scanner){
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      DEPOSITS");
@@ -224,6 +232,7 @@ public class FinancialTracker {
     }
 
     public static void displayPayments(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      PAYMENTS");
@@ -245,6 +254,7 @@ public class FinancialTracker {
 
     public static void reportsScreen(Scanner scanner) {
         while (true) {
+            clearConsole();
             System.out.println("\n" + "=".repeat(50));
             System.out.println("                      REPORTS");
             System.out.println("=".repeat(50));
@@ -287,6 +297,7 @@ public class FinancialTracker {
     }
 
     public static void monthToDate(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         LocalDate now = LocalDate.now();
         System.out.println("\n" + "=".repeat(50));
@@ -309,6 +320,7 @@ public class FinancialTracker {
     }
 
     public static void previousMonth(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         YearMonth lastMonth = YearMonth.now().minusMonths(1);
         System.out.println("\n" + "=".repeat(50));
@@ -333,6 +345,7 @@ public class FinancialTracker {
     }
 
     public static void yearToDate(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         int currentYear = LocalDate.now().getYear();
         System.out.println("\n" + "=".repeat(50));
@@ -359,6 +372,7 @@ public class FinancialTracker {
     }
 
     public static void previousYear(Scanner scanner) {
+        clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         int lastYear = LocalDate.now().getYear() - 1;
         System.out.println("\n" + "=".repeat(50));
@@ -384,6 +398,7 @@ public class FinancialTracker {
     }
 
     public static void searchByVendor(Scanner scanner) {
+        clearConsole();
         System.out.print("\nEnter vendor name: ");
         String searchVendor = scanner.nextLine();
 
@@ -435,5 +450,11 @@ public class FinancialTracker {
             //file doesn't exist yet, return empty list
         }
         return transactions;
+    }
+
+    public static void clearConsole() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
 }
