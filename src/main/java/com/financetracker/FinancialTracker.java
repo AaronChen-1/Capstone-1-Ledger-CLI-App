@@ -114,6 +114,7 @@ public class FinancialTracker {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      MAKE PAYMENT");
         System.out.println("=".repeat(50));
+        System.out.println("(Type 'X' if you want to cancel and return to Home)" );
 
         System.out.print("Description: ");
         String description = scanner.nextLine();
