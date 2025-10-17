@@ -28,9 +28,14 @@ public class FinancialTracker {
     }
 
     public static void welcomePage() {
-        System.out.println("=".repeat(50));
-        System.out.println("        WELCOME TO CORNER MART FINANCIALS");
-        System.out.println("=".repeat(50));
+        System.out.println("""
+                ░█▀▀░█▀█░█▀▄░█▀█░█▀▀░█▀▄░░░█▄█░█▀█░█▀▄░▀█▀
+                ░█░░░█░█░█▀▄░█░█░█▀▀░█▀▄░░░█░█░█▀█░█▀▄░░█░
+                ░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀░▀░░░▀░▀░▀░▀░▀░▀░░▀░
+                ░█▀▀░▀█▀░█▀█░█▀█░█▀█░█▀▀░▀█▀░█▀█░█░░░█▀▀ \s
+                ░█▀▀░░█░░█░█░█▀█░█░█░█░░░░█░░█▀█░█░░░▀▀█ \s
+                ░▀░░░▀▀▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀ \s
+                """);
         System.out.println("Your trusted neighborhood store since 1998!");
         System.out.println();
         simulateLoading("Loading your financial dashboard, please wait");
