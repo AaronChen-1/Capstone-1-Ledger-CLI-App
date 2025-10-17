@@ -123,17 +123,17 @@ public class FinancialTracker {
         System.out.println("=".repeat(50));
         System.out.println("(Type 'X' if you want to cancel and return to Home)" );
 
-        System.out.print("Description: ");
+        System.out.println("Description: ");
         String description = scanner.nextLine();
         if (description.equalsIgnoreCase("X")) {
             simulateLoading("Payment cancelled. Returning to Home...");
             return;
         }
 
-        System.out.print("Vendor: ");
+        System.out.println("Vendor: ");
         String vendor = scanner.nextLine();
 
-        System.out.print("Amount: ");
+        System.out.println("Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
 
