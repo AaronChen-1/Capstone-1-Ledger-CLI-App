@@ -36,7 +36,7 @@ public class FinancialTracker {
                 case "D": addDeposit(scanner);break;
                 case "P": makePayment(scanner);break;
                 case "L": ledgerScreen(scanner);break;
-                case "X": System.out.println("Exit");
+                case "X": System.out.println("Goodbye");
                     System.exit(0);
                 default:
                     System.out.println("Invalid option. Try again.");
@@ -359,7 +359,7 @@ public class FinancialTracker {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length == 5) {
-                    Transaction t = new Transaction(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                    Transaction t = new Transaction(parts[0].trim(), parts[1].trim(), parts[2].trim(), parts[3].trim(), Double.parseDouble(parts[4].trim()));
                     transactions.add(t);
                 }
             }
