@@ -17,6 +17,19 @@ public class FinancialTracker {
         homeScreen();
     }
 
+    public static void simulateLoading(String message) {
+        System.out.println("\n" + message);
+        try {
+            for (int i = 0; i<3;i++) {
+                Thread.sleep(800);
+                System.out.println(".");
+            }
+            System.out.println("\n");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     public static void homeScreen() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -35,7 +48,8 @@ public class FinancialTracker {
             switch (choice) {
                 case "D": addDeposit(scanner);break;
                 case "P": makePayment(scanner);break;
-                case "L": ledgerScreen(scanner);break;
+                case "L": simulateLoading("Opening Ledger");
+                    ledgerScreen(scanner);break;
                 case "X": System.out.println("Goodbye");
                     System.exit(0);
                 default:
