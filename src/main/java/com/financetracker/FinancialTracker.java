@@ -82,9 +82,14 @@ public class FinancialTracker {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ADD DEPOSIT");
         System.out.println("=".repeat(50));
+        System.out.println("(Type 'X' if you want to cancel and return to Home)" );
 
         System.out.print("Description: ");
         String description = scanner.nextLine();
+        if (description.equalsIgnoreCase("X")) {
+            simulateLoading("Deposit cancelled. Returning to Home...");
+            return;
+        }
 
         System.out.print("Vendor: ");
         String vendor = scanner.nextLine();
