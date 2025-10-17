@@ -77,7 +77,6 @@ public class FinancialTracker {
         }
     }
 
-    // Add Deposit for home screen
     public static void addDeposit(Scanner scanner) {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      ADD DEPOSIT");
@@ -96,20 +95,18 @@ public class FinancialTracker {
 
         System.out.print("Amount: ");
         double amount = scanner.nextDouble();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine();
 
-        // Get current date and time
+        // grab current date and time
         String date = LocalDate.now().toString();
         String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-        // Create transaction (positive amount for deposit)
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
 
         saveTransaction(transaction);
         System.out.println("Deposit saved");
     }
 
-    // Make Payment for home screen
     public static void makePayment(Scanner scanner) {
         System.out.println("\n" + "=".repeat(50));
         System.out.println("                      MAKE PAYMENT");
