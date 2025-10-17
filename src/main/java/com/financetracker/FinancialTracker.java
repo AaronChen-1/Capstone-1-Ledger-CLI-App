@@ -194,9 +194,9 @@ public class FinancialTracker {
     public static void displayAll(Scanner scanner) {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      ALL TRANSACTIONS");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                               ALL TRANSACTIONS");
+        System.out.println("=".repeat(80));
         if (transactions.isEmpty()) {
             System.out.println("No transactions found.");
         } else {
@@ -212,9 +212,9 @@ public class FinancialTracker {
     public static void displayDeposits(Scanner scanner){
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      DEPOSITS");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                     DEPOSITS");
+        System.out.println("=".repeat(80));
         boolean found = false;
 
         for (int i = transactions.size() - 1; i>=0; i--) {
@@ -234,9 +234,9 @@ public class FinancialTracker {
     public static void displayPayments(Scanner scanner) {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      PAYMENTS");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                    PAYMENTS");
+        System.out.println("=".repeat(80));
         boolean found = false;
         for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
             Transaction t = transactions.get(i);
@@ -300,9 +300,9 @@ public class FinancialTracker {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         LocalDate now = LocalDate.now();
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      MONTH TO DATE");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                  MONTH TO DATE");
+        System.out.println("=".repeat(80));
         boolean found = false;
         for (int i = transactions.size() -1; i > 0; i--) {
             Transaction t = transactions.get(i);
@@ -323,9 +323,9 @@ public class FinancialTracker {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         YearMonth lastMonth = YearMonth.now().minusMonths(1);
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      PREVIOUS MONTH");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                PREVIOUS MONTH");
+        System.out.println("=".repeat(80));
         boolean found = false;
 
         for (int i = transactions.size() -1; i >= 0; i--) {
@@ -348,9 +348,9 @@ public class FinancialTracker {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         int currentYear = LocalDate.now().getYear();
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      YEAR TO DATE");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                   YEAR TO DATE");
+        System.out.println("=".repeat(80));
         boolean found = false;
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
@@ -375,9 +375,9 @@ public class FinancialTracker {
         clearConsole();
         ArrayList<Transaction> transactions = loadTransactions();
         int lastYear = LocalDate.now().getYear() - 1;
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("                      PREVIOUS YEAR");
-        System.out.println("=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                                   PREVIOUS YEAR");
+        System.out.println("=".repeat(80));
         boolean found = false;
 
         for (int i = transactions.size() - 1; i >= 0; i--) {
@@ -403,9 +403,9 @@ public class FinancialTracker {
         String searchVendor = scanner.nextLine();
 
         ArrayList<Transaction> transactions = loadTransactions();
-        System.out.println("\n" + "=".repeat(50));
+        System.out.println("\n" + "=".repeat(80));
         System.out.println("                      SEARCH RESULTS FOR: " + searchVendor);
-        System.out.println("=".repeat(50));
+        System.out.println("=".repeat(80));
         boolean found = false;
 
         for (int i = transactions.size() -1; i>= 0; i--) {
