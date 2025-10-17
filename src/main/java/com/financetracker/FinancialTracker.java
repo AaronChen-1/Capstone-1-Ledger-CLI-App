@@ -142,8 +142,7 @@ public class FinancialTracker {
         } else {
             for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
                 Transaction t = transactions.get(i);
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
-                        t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
             }
         }
         System.out.println("\nPress Enter to continue...");
@@ -160,7 +159,7 @@ public class FinancialTracker {
         for (int i = transactions.size() - 1; i>=0; i--) {
             Transaction t = transactions.get(i);
             if (t.amount > 0 ) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
         }
@@ -180,7 +179,7 @@ public class FinancialTracker {
         for (int i = transactions.size() - 1; i >= 0; i--) { // newest first
             Transaction t = transactions.get(i);
             if (t.amount < 0) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                System.out.printf("%s | %s | %s | %s | $%.2f%n",
                         t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
@@ -231,7 +230,7 @@ public class FinancialTracker {
             Transaction t = transactions.get(i);
             LocalDate transDate = LocalDate.parse(t.date);
             if (transDate.getYear() == now.getYear() && transDate.getMonth() == now.getMonth()) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
         }
@@ -255,7 +254,7 @@ public class FinancialTracker {
             LocalDate transDate = LocalDate.parse(t.date);
             YearMonth transMonth = YearMonth.from(transDate);
             if (transMonth.equals(lastMonth)) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
         }
@@ -278,7 +277,7 @@ public class FinancialTracker {
             Transaction t = transactions.get(i);
             LocalDate transDate = LocalDate.parse(t.date);
             if (transDate.getYear() == currentYear) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                System.out.printf("%s | %s | %s | %s | $%.2f%n",
                         t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
@@ -304,7 +303,7 @@ public class FinancialTracker {
             Transaction t = transactions.get(i);
             LocalDate transDate = LocalDate.parse(t.date);
             if (transDate.getYear() == lastYear) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n",
+                System.out.printf("%s | %s | %s | %s | $%.2f%n",
                         t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
@@ -330,7 +329,7 @@ public class FinancialTracker {
         for (int i = transactions.size() -1; i>= 0; i--) {
             Transaction t = transactions.get(i);
             if (t.vendor.equalsIgnoreCase(searchVendor)) {
-                System.out.printf("%s | %s | %-20s | %-15s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
+                System.out.printf("%s | %s | %s | %s | $%.2f%n", t.date, t.time, t.description, t.vendor, t.amount);
                 found = true;
             }
         }

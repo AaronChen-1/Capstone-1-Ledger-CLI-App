@@ -17,7 +17,7 @@ public class Transaction {
     }
 
     public String toCSV() {
-        return date + " | " + time + "|" + description +"|" + vendor + "|" + amount;
+        return date + " | " + time + " | " + description +" | " + vendor + " | " + amount;
     }
 
 }
